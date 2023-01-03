@@ -1,23 +1,52 @@
-import { useTable,useSortBy ,useFilters,} from "react-table";
+import { useTable, useColumnOrder } from "react-table";
 import { Col } from "./COL";
 import data from "./MOCK_DATA.json";
 import { useMemo } from "react";
+import Nevigation from "./Nevigation";
 
-const Sorting = () => {
+const table = () => {
   const columns = useMemo(() => Col, []);
   const datas = useMemo(() => data, []);
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow,footerGroups  } = useTable({
-    columns: columns,
-    data: datas},
-    useFilters,
-    )
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+    setColumnOrder,
+  } = useTable(
+    {
+      columns,
+      data: datas,
+    },
+    useColumnOrder
+  );
+  const chnageorder = () => {
+    setColumnOrder(["id", "first_name", "gender", "email", "last_name"]);
+  };
+  const chnageordertoorignal = () => {
+    setColumnOrder(["id", "first_name", "last_name", "email", "gender"]);
+  };
 
-    // const {globalFilter} = state
   return (
     <>
-    {/* <globalFilter filter={globalFilter} setFilter={setGlobalFilter}/> */}
-      <table {...getTableProps()} style={{ border: "solid 1px blue" }}>
+      <Nevigation />
+      <div style={{ textAlign: "center" }}>
+        <button
+          style={{ backgroundColor: "yellow", color: "green", margin: "20px" }}
+          onClick={chnageorder}
+        >
+          Change Col Order
+        </button>
+        <button
+          style={{ backgroundColor: "yellow", color: "green", margin: "20px" }}
+          onClick={chnageordertoorignal}
+        >
+          Orignal
+        </button>
+      </div>
+      <table {...getTableProps()} style={{ border: "solid 1px black" ,margin: "auto",boxShadow: "1px 1px 20px 1px black"}}>
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -32,10 +61,7 @@ const Sorting = () => {
                     textAlign: "center",
                   }}
                 >
-                    <div>
-                        {columns.canFilter ? columns.render('Filter'):null}
-                    </div>
-                  {columns.render("Headers")}
+                  {columns.render("Headers")}{" "}
                 </th>
               ))}
             </tr>
@@ -65,22 +91,9 @@ const Sorting = () => {
             );
           })}
         </tbody>
-        <tfoot style={{border: "solid 1px blue", background: "white",
-                        textAlign: "center",color:'black'}} >
-          {footerGroups.map((footerGroup) => (
-            <tr {...footerGroup.getFooterGroupProps()}>
-              {footerGroup.headers.map((columns) => (
-                <td>
-                  {columns.render("Footer")}
-                </td>)
-                )}
-            </tr>
-
-          ))}
-        </tfoot>
       </table>
     </>
   );
 };
 
-export default Sorting;
+export default table;

@@ -2,50 +2,22 @@ import { useTable } from "react-table";
 import { Col } from "./COL";
 import data from "./MOCK_DATA.json";
 import { useMemo } from "react";
-import React from "react";
+import Nevigation from "./Nevigation";
 
 const table = () => {
   const columns = useMemo(() => Col, []);
   const datas = useMemo(() => data, []);
 
-  const IndeterminateCheckbox = React.forwardRef(
-  ({ indeterminate, ...rest }, ref) => {
-    const defaultRef = React.useRef()
-    const resolvedRef = ref || defaultRef
-
-    React.useEffect(() => {
-      resolvedRef.current.indeterminate = indeterminate
-    }, [resolvedRef, indeterminate])
-
-    return <input type="checkbox" ref={resolvedRef} {...rest} />
-  }
-)
-  
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow,allColumns,
-    getToggleHideAllColumnsProps} = useTable({
-        columns: columns,
-        data: datas,
-    })
-    
+  const tableinstance = useTable({
+    columns: columns,
+    data: datas,
+  });
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    tableinstance;
   return (
     <>
-       <div>
-        <div>
-          <IndeterminateCheckbox {...getToggleHideAllColumnsProps()} /> Toggle
-          All
-        </div>
-        {allColumns.map(column => (
-          <div key={column.id}>
-            <label>
-              <input type="checkbox" {...column.getToggleHiddenProps()} />{' '}
-              {column.id}
-            </label>
-          </div>
-        ))}
-        <br />
-      </div>
-
-      <table {...getTableProps()} style={{ border: "solid 1px blue" }}>
+      <Nevigation></Nevigation>
+      <table {...getTableProps()} style={{ border: "solid 1px black" ,margin: "auto",boxShadow: "1px 1px 20px 1px black"}}>
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>

@@ -1,19 +1,30 @@
-import { useTable,useSortBy } from "react-table";
+import { useTable, useSortBy } from "react-table";
 import { Col } from "./COL";
 import data from "./MOCK_DATA.json";
 import { useMemo } from "react";
+import Nevigation from "./Nevigation";
 
 const Sorting = () => {
   const columns = useMemo(() => Col, []);
   const datas = useMemo(() => data, []);
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow,footerGroups } = useTable({
-    columns: columns,
-    data: datas,},
-    useSortBy)
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+  } = useTable(
+    {
+      columns: columns,
+      data: datas,
+    },
+    useSortBy
+  );
   return (
     <>
-      <table {...getTableProps()} style={{ border: "solid 1px blue" }}>
+      <Nevigation></Nevigation>
+      <table {...getTableProps()} style={{ border: "solid 1px black" ,margin: "auto",boxShadow: "1px 1px 20px 1px black"}}>
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -30,7 +41,11 @@ const Sorting = () => {
                 >
                   {columns.render("Headers")}
                   <span>
-                    {columns.isSorted? (columns.isSortedDesc? " 🔽" :"🔼"):" "}
+                    {columns.isSorted
+                      ? columns.isSortedDesc
+                        ? " 🔽"
+                        : "🔼"
+                      : " "}
                   </span>
                 </th>
               ))}
@@ -61,19 +76,6 @@ const Sorting = () => {
             );
           })}
         </tbody>
-        <tfoot style={{border: "solid 1px blue", background: "white",
-                        textAlign: "center",color:'black'}} >
-          {footerGroups.map((footerGroup) => (
-            <tr {...footerGroup.getFooterGroupProps()}>
-              {footerGroup.headers.map((columns) => (
-                <td>
-                  {columns.render("Footer")}
-                </td>)
-                )}
-            </tr>
-
-          ))}
-        </tfoot>
       </table>
     </>
   );

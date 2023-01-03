@@ -29,7 +29,7 @@ export default function Navbar() {
           </Link>
         </li>
         <li>
-          <Link href="/">
+          <Link href="/Table/BasicTable">
               Table
           </Link>
         </li>
