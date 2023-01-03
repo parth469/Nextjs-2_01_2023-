@@ -3,6 +3,7 @@ import { Col } from "./COL";
 import data from "./MOCK_DATA.json";
 import { useMemo } from "react";
 import React from "react";
+
 import Nevigation from "./Nevigation";
 
 const table = () => {
