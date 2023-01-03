@@ -25,12 +25,12 @@ export default function Navbar() {
         </li>
         <li>
           <Link href="/Setup">
-              Setup  
+              Login  
           </Link>
         </li>
         <li>
-          <Link href="/Login">
-              Login  
+          <Link href="/">
+              Table
           </Link>
         </li>
       </ul>
