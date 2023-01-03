@@ -1,8 +1,8 @@
-import { useTable } from "react-table";
 import { Col } from "./COL";
-import data from "./MOCK_DATA.json";
-import React,{ useMemo } from "react";
 import Nevigation from "./Nevigation";
+import { useTable } from "react-table";
+import React,{ useMemo } from "react";
+import data from "./MOCK_DATA.json";
 
 const table = () => {
   const columns = useMemo(() => Col, []);
