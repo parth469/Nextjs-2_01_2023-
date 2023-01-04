@@ -37,13 +37,13 @@ const table = () => {
   return (
     <>
       <Nevigation></Nevigation>
-      <div style={{display:"flex",color:'whitesmoke',fontSize:"20px",margin:"20px",justifyContent:"space-around"}}>
+      <div style={{display:"flex",color:'whitesmoke',fontSize:"20px",margin:"20px",justifyContent:"space-around",color:"black"}}>
         <div>
           <IndeterminateCheckbox {...getToggleHideAllColumnsProps()} /> Toggle
           All
         </div>
         {allColumns.map((column) => (
-          <div style={{margin:"0px 10px"}} key={column.id}>
+          <div style={{margin:"0px 10px" ,color:"black"}} key={column.id}>
             <label>
               <input type="checkbox" {...column.getToggleHiddenProps()} />{" "}
               {column.id}
@@ -85,8 +85,9 @@ const table = () => {
                       {...cell.getCellProps()}
                       style={{
                         padding: "10px",
-                        border: "solid 1px gray",
-                        background: "black",
+                        background: "white",
+                        border:"none",
+                        borderBottom:"1px solid black",
                         textAlign: "center",
                       }}
                     >

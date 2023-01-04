@@ -1,19 +1,17 @@
-import Layout from '../Components/Layout'
-import '../styles/globals.css'
-import { Inter } from '@next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
-// import Navbar from "./Components/Navbar";
-// import Footer from "./Components/Footer";
+import Layout from "../Components/Layout";
+import "../styles/globals.css";
+import { Inter } from "@next/font/google";
+import { ChakraProvider } from "@chakra-ui/react";
+const inter = Inter({ subsets: ["latin"] });
 
 export default function App({ Component, pageProps }) {
   return (
-  <>
-  {/* <Navbar/> */}
-  <Layout>
-    <Component {...pageProps} />
-  </Layout>
-  {/* <Footer/> */}
-  </>
-  )
+    <>
+      <ChakraProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ChakraProvider>
+    </>
+  );
 }

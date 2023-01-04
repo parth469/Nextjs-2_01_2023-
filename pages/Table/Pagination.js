@@ -128,8 +128,9 @@ const Pagination = () => {
                       {...cell.getCellProps()}
                       style={{
                         padding: "10px",
-                        border: "solid 1px gray",
-                        background: "black",
+                         background: "white",
+                        border:"none",
+                        borderBottom:"1px solid black",
                         textAlign: "center",
                       }}
                     >

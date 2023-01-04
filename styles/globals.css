@@ -1,10 +1,9 @@
 body{
-  background-color: #666464;
+  background-color:#363636;
   color: white;
 }
 
 h1{
-  color: white;
   text-align: center;
   font-size: 30px;
 }
@@ -12,8 +11,6 @@ h1{
 li{
   list-style-type: none;
   padding: 10px;
- 
-  color: white;
   border-radius: 15px;
   text-align: center;
   text-decoration: none; 
@@ -21,7 +18,8 @@ li{
 }
 
 nav{
-  background-color:#363636
+  background-color:#363636;
+  color: white;
 }
 ul{
   display: flex;
@@ -32,19 +30,16 @@ ul{
 li{
   font-size: 16px;
   margin: 30px auto;
-
+  background-color: #363636;
+  color: white;
 }
 a{
   color: aqua;
   text-decoration: none;
 }
 a:hover{
-  text-decoration: underline;
-  
-}
-
-li:hover{
-  border: 1px solid white;
+  border-bottom: 2px solid aqua;
+  border-radius: 2px;
 }
 
 h2{

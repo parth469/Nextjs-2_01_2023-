@@ -1,6 +1,7 @@
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Head from "next/head"
+import { background } from "@chakra-ui/react";
 
 const  Layout= ({ children }) => {
     return (
@@ -9,7 +10,7 @@ const  Layout= ({ children }) => {
         <title>BLog Website</title>
         <link rel="icon" href="/favicon.ico" />
         </Head>
-        <div className="container">
+        <div >
             <Navbar/>
             {children}
             <Footer/>
